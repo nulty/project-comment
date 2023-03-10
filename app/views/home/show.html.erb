@@ -1,0 +1,8 @@
+<div>
+  <h1 class="font-bold text-4xl">Welcome to Projectivity</h1>
+  <% if session[:user_id].blank? %>
+    <p>Please sign in</p>
+  <% else %>
+    <p>Go to the Projects! <%= projects_path %></p>
+  <% end %>
+</div>

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
+  get 'home/show'
   get 'signup', to: 'registrations#new'
   post 'signup', to: 'registrations#create'
 
   resources :users
   resources :projects
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'home#show'
 end
