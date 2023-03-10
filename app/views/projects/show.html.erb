@@ -4,4 +4,29 @@
     Status: 
     <%= @project.status %>
   </div>
+  <div>
+    <% @project.comments.each do |comment|  %>
+      <div class="comment-time">
+        <%= comment.created_at %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <div data-controller="comments" data-action="click->comments#newComment">
+      Create a new Comment
+      <div data-comments-target="form" class="invisible js-toggle-comment-form">
+        <div class='form'>
+          <%= form_for @comment do |f| %>
+            <div>
+              Comment: <%= f.text_field :body  %>
+            <%=f.hidden_field :user_id %>
+            <%=f.hidden_field :project_id %>
+            <%= f.submit 'Comment' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
