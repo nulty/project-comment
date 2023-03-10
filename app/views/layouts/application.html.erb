@@ -12,6 +12,15 @@
   </head>
 
   <body>
+    <nav class="sticky h-[4rem] bg-teal-500">
+
+      <% if session[:user_id].blank? %>
+        <%= link_to 'Please sign in', signin_path, class: 'p-4 bg-yellow-400' %>
+      <% else %>
+        <%= link_to 'Signout', signout_path, data: { "turbo-method": :delete }, class: 'p-4 bg-red-500' %>
+      <% end %>
+
+    </nav>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
