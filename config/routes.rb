@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'projects/:id', to: 'projects#show', as: :project
   get 'projects', to: 'projects#index', as: :projects
 
