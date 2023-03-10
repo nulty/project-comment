@@ -18,12 +18,10 @@
       <div data-comments-target="form" class="invisible js-toggle-comment-form">
         <div class='form'>
           <%= form_for @comment do |f| %>
-            <div>
-              Comment: <%= f.text_field :body  %>
-            <%=f.hidden_field :user_id %>
-            <%=f.hidden_field :project_id %>
+            <%= f.text_field :body  %>
+            <%= f.hidden_field :user_id %>
+            <%= f.hidden_field :project_id %>
             <%= f.submit 'Comment' %>
-            </div>
           <% end %>
         </div>
       </div>
