@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post 'signup', to: 'registrations#create'
 
   resources :users
-  resources :projects
+  namespace :admin do
+    resources :projects
+  end
 
   root 'home#show'
 end
