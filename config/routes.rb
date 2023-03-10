@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'projects/:id', to: 'projects#show', as: :project
+  get 'projects', to: 'projects#index', as: :projects
+
   get 'home/show'
   get 'signin', to: 'sessions#new', as: :signin
   post 'signin', to: 'sessions#create'

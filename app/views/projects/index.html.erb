@@ -1,0 +1,17 @@
+<div>
+  <h1 class="font-bold text-4xl">Projects#index</h1>
+  <div class="flex flex-col gap-y-6">
+    <% @projects.each do |project| %>
+      <div class="bg-blue-100 w-full p-4">
+        <div class="flex justify-between">
+          Name:
+          <h2 class="text-lg"><%= project.name %></h2></div>
+        <div class="flex justify-between">
+          Status:  
+          <div><%= project.status %> </div>
+        </div>
+        <%= link_to "Show", project %>
+      </div>
+    <% end %>
+  </div>
+</div>
