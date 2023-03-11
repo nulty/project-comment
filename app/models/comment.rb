@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
   validates :user, :project, presence: true
   include Tivity::Activise
 
-  activities create: true
+  activities create: true, for: :project
 end

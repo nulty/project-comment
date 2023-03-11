@@ -30,7 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_161134) do
 
   create_table "tivity_activities", force: :cascade do |t|
     t.string "activiable_type"
-    t.string "activiable_id"
+    t.bigint "activiable_id"
+    t.string "activised_type"
+    t.bigint "activised_id"
     t.bigint "user_id"
     t.string "operation"
     t.datetime "created_at", null: false
