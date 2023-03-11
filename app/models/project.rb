@@ -2,5 +2,5 @@ class Project < ApplicationRecord
   include Tivity::Activise
   has_many :comments
 
-  activities create: true
+  activities create: true, update: true
 end
