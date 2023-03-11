@@ -10,12 +10,13 @@ module Tivity
       # create: :create_proc
       def activities(opts = {})
         before_create :create_activity if opts[:create]
+        has_many :activities, class_name: 'Tivity::Activity', as: :activiable
       end
     end
 
     included do
       def create_activity
-        Activity.create(activity_type: self.class.to_s, activity_id: id, user_id: User.last.id, operation: :create)
+        Activity.create(activiable_type: self.class.to_s, activiable_id: id, user_id: User.last.id, operation: :create)
       end
     end
   end

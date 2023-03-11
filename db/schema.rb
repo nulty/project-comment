@@ -29,8 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_161134) do
   end
 
   create_table "tivity_activities", force: :cascade do |t|
-    t.string "activity_type"
-    t.string "activity_id"
+    t.string "activiable_type"
+    t.string "activiable_id"
     t.bigint "user_id"
     t.string "operation"
     t.datetime "created_at", null: false
