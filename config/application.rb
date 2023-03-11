@@ -33,5 +33,9 @@ module Projectivity
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    ActiveSupport.on_load(:active_record) do
+      require 'tivity'
+    end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_135851) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_161134) do
   create_table "comments", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "user_id", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_135851) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tivity_activities", force: :cascade do |t|
+    t.string "activity_type"
+    t.string "activity_id"
+    t.bigint "user_id"
+    t.string "operation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
