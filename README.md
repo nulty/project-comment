@@ -23,8 +23,8 @@ Say we want to `activitise` the Project model. When a Project is created, we cre
 
 ```ruby
 class Project
-
-activity create: true
+  activity create: true
+end
 ```
 
 ```ruby
@@ -38,8 +38,8 @@ Activity.create(activiable_type: 'Project', activiable_id: 1, operation: :create
 When the project is updated, we want the activity to record what changed.
 ```ruby
 class Project
-
-activity update: true
+  activity update: true
+end
 ```
 
 ```ruby
@@ -47,6 +47,8 @@ Project.update(status: 'off')
 ---
 Activity.create(activiable_type: 'Project', activiable_id: 1, operation: :updated, diff: "{status: ['on', 'off']")
 ```
+
+**Associated Activity**
 
 Collect activity on an association
 
