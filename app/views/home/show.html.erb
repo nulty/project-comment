@@ -1,7 +1,11 @@
-<div>
+<div class="flex flex-col h-full">
   <h1 class="font-bold text-4xl">Welcome to Projectivity</h1>
   <% if session[:user_id].blank? %>
-    <p>Please sign in</p>
+    <p>Please Signin or Signup</p>
+    <% else %>
+  <div>
+    <p>Go to the Projects!</p>
+  </div>
+  <div><%= link_to 'Projects', projects_path, class: "rounded bg-slate-500 p-4 m-4 inline-block" %></div>
   <% end %>
-  <p>Go to the Projects! <%= link_to 'Projects', projects_path %></p>
 </div>

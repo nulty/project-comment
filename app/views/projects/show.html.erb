@@ -33,15 +33,17 @@
   </div>
 
   <div>
-    <div data-controller="comments" data-action="click->comments#newComment">
-      Create a new Comment
-      <div data-comments-target="form" class="invisible js-toggle-comment-form">
+    <div data-controller="comments">
+      <div class="inline-block rounded bg-indigo-400 px-4 py-2" data-action="click->comments#newComment" >
+        Create a new Comment
+      </div>
+      <div data-comments-target="form" class="invisible js-toggle-comment-form bg-slate-200 p-8">
         <div class='form'>
           <%= form_for @comment do |f| %>
             <%= f.text_field :body  %>
             <%= f.hidden_field :user_id %>
             <%= f.hidden_field :project_id %>
-            <%= f.submit 'Comment' %>
+            <%= f.submit 'Comment', class: 'rounded px-3 py-2 bg-indigo-400 m-2' %>
           <% end %>
         </div>
       </div>
