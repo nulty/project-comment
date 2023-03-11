@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_161134) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_11_182456) do
   create_table "comments", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "user_id", null: false
@@ -30,13 +30,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_161134) do
 
   create_table "tivity_activities", force: :cascade do |t|
     t.string "activiable_type"
-    t.bigint "activiable_id"
+    t.integer "activiable_id"
     t.string "activised_type"
-    t.bigint "activised_id"
-    t.bigint "user_id"
+    t.integer "activised_id"
+    t.integer "user_id"
     t.string "operation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "diff"
   end
 
   create_table "users", force: :cascade do |t|

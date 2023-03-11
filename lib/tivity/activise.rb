@@ -14,9 +14,7 @@ module Tivity
           end
         end
 
-        if opts[:update]
-          after_update :update_activity
-        end
+        before_update :update_activity if opts[:update]
 
         has_many :activities, class_name: 'Tivity::Activity', as: :activiable
       end
@@ -41,7 +39,9 @@ module Tivity
       end
 
       def update_activity
-        Activity.create!(activiable_type: self.class.to_s, activiable_id: id, user_id: User.last.id, operation: :update)
+        diff = changes.except('updated_at')
+        Activity.create!(activiable_type: self.class.to_s, activiable_id: id, user_id: User.last.id,
+                         operation: :update, diff:)
       end
     end
   end
