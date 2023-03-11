@@ -1,4 +1,3 @@
-require 'pry'
 module Tivity
   # Needs a database table to store all the activities
   # Needs a module to include to models that should be activitised
@@ -9,7 +8,7 @@ module Tivity
       # opts
       # create: :create_proc
       def activities(opts = {})
-        before_create :create_activity if opts[:create]
+        after_create :create_activity if opts[:create]
         has_many :activities, class_name: 'Tivity::Activity', as: :activiable
       end
     end
