@@ -24,24 +24,34 @@ module Tivity
       def create_activity_for(assoc)
         target_model = public_send(assoc)
         target_id = target_model.id
-        Activity.create(
+        Activity.create!(
           activiable_type: target_model.class.name,
           activiable_id: target_id,
           activised_type: self.class.name,
           activised_id: id,
-          user_id: User.last.id,
+          user_id: Tivity.tivity_user.id,
           operation: :create
         )
       end
 
       def create_activity
-        Activity.create!(activiable_type: self.class.to_s, activiable_id: id, user_id: User.last.id, operation: :create)
+        Activity.create!(
+          activiable_type: self.class.to_s,
+          activiable_id: id,
+          user_id: Tivity.tivity_user.id,
+          operation: :create
+        )
       end
 
       def update_activity
         diff = changes.except('updated_at')
-        Activity.create!(activiable_type: self.class.to_s, activiable_id: id, user_id: User.last.id,
-                         operation: :update, diff:)
+        Activity.create!(
+          activiable_type: self.class.to_s,
+          activiable_id: id,
+          user_id: Tivity.tivity_user.id,
+          operation: :update,
+          diff:
+        )
       end
     end
   end

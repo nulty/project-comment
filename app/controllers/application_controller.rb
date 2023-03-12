@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  private
+  protected
 
   def ensure_logged_in
     if session[:user_id].blank?
