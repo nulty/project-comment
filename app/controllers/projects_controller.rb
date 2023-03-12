@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :ensure_logged_in
 
   def show
-    @project = Project.includes(:comments).find(params[:id])
+    @project = Project.includes(activities: [:user, { activised: :user }]).find(params[:id])
   end
 
   def index
