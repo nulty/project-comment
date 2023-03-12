@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :comments
   get 'projects/:id', to: 'projects#show', as: :project
   get 'projects', to: 'projects#index', as: :projects
+  post 'projects/:id/comment', to: 'projects#comment', as: :project_comment
 
   get 'home/show'
   get 'signin', to: 'sessions#new', as: :signin
