@@ -9,14 +9,14 @@ module Tivity
         if opts[:create]
           if opts[:for]
             after_create ->(record) { record.create_activity_for(opts[:for]) }
+
+            has_one :activity, class_name: 'Tivity::Activity', foreign_key: 'activised_id'
           else
             after_create :create_activity
+            has_many :activities, class_name: 'Tivity::Activity', foreign_key: 'activiable_id'
+            before_update :update_activity if opts[:update]
           end
         end
-
-        before_update :update_activity if opts[:update]
-
-        has_many :activities, class_name: 'Tivity::Activity', as: :activiable
       end
     end
 
