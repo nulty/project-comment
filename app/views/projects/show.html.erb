@@ -4,30 +4,12 @@
     Status: 
     <%= @project.status %>
   </div>
-  <div class="flex flex-col gap-4">
+  <div id="activities" class="flex flex-col gap-4">
     <% @project.activities.each do |a| %>
       <% if a.activised_type.present? %>
-        <div class="flex flex-col bg-green-200 p-4 comment-time">
-          <div class="font-bold"><%= a.activised_type %> was <%= a.operation %>d</div>
-          <div class="italic p-4 bg-white"><%= a.activised.body %></div>
-          <div class="flex justify-between mt-4">
-            <%= a.user.email %>
-            <div class="text-xs pt-1"><%= a.created_at&.to_formatted_s(:long_ordinal) %></div>
-          </div>
-        </div>
+        <%= render partial: 'projects/associated_activity', locals: {a: a} %>
       <% else %>
-        <div class="flex flex-col bg-green-200 p-4  comment-time">
-          <div class="font-bold mb-4"><%= a.activiable_type %> was <%= a.operation %>d</div>
-          <% a.diff && a.diff.each do |property, (from,to)| %>
-            <div class="ml-4">
-              Changed <%= property %> from <%= from %> to <%= to %>
-            </div>
-          <% end %>
-          <div class="flex justify-between mt-4">
-            <%= a.user.email %>
-            <div class="text-xs pt-1"><%= a.created_at&.to_formatted_s(:long_ordinal) %></div>
-          </div>
-        </div>
+        <%= render partial: 'projects/activity', locals: {a: a} %>
       <% end %>
     <% end %>
   </div>
@@ -38,13 +20,8 @@
         Create a new Comment
       </div>
       <div data-comments-target="form" class="invisible js-toggle-comment-form bg-slate-200 p-8">
-        <div class='form'>
-          <%= form_for @comment do |f| %>
-            <%= f.text_field :body  %>
-            <%= f.hidden_field :user_id %>
-            <%= f.hidden_field :project_id %>
-            <%= f.submit 'Comment', class: 'rounded px-3 py-2 bg-indigo-400 m-2' %>
-          <% end %>
+        <div id="comment-form" class='form'>
+          <%= render partial: 'projects/comment_form', locals: { project: @project } %>
         </div>
       </div>
     </div>

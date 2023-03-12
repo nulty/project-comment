@@ -1,0 +1,8 @@
+<div class="flex flex-col bg-green-200 p-4 comment-time">
+  <div class="font-bold"><%= a.activised_type %> was <%= a.operation %>d</div>
+  <div class="italic p-4 bg-white"><%= a.activised.body %></div>
+  <div class="flex justify-between mt-4">
+    <%= a.user.email %>
+    <div class="text-xs pt-1"><%= a.created_at&.to_formatted_s(:long_ordinal) %></div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<%= form_with scope: 'comment', url: project_comment_path(project), local: false do |f| %>
+  <%= f.text_field :body  %>
+  <%= f.hidden_field :project_id %>
+  <%= f.submit 'Comment', class: 'rounded px-3 py-2 bg-indigo-400 m-2' %>
+<% end %>
+
