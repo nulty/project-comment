@@ -10,7 +10,7 @@ module Tivity
           if opts[:for]
             after_create ->(record) { record.create_activity_for(opts[:for]) }
 
-            has_one :activity, class_name: 'Tivity::Activity', foreign_key: 'activised_id'
+            has_one :activity, class_name: 'Tivity::Activity', foreign_key: 'activised_id', dependent: :destroy
           else
             after_create :create_activity
             has_many :activities, class_name: 'Tivity::Activity', foreign_key: 'activiable_id'
