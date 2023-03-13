@@ -7,7 +7,7 @@
   <div id="activities" class="flex flex-col gap-4">
     <% @project.activities.each do |a| %>
       <% if a.activised_type.present? %>
-        <%= render partial: 'projects/associated_activity', locals: {a: a} %>
+        <%= render partial: 'projects/associated_activity', locals: {project: @project, a: a} %>
       <% else %>
         <%= render partial: 'projects/activity', locals: {a: a} %>
       <% end %>

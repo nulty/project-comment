@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'projects/:id', to: 'projects#show', as: :project
   get 'projects', to: 'projects#index', as: :projects
   post 'projects/:id/comment', to: 'projects#comment', as: :project_comment
+  delete 'projects/:id/comment/:comment_id', to: 'projects#delete_comment', as: :projects_comment
 
   get 'home/show'
   get 'signin', to: 'sessions#new', as: :signin

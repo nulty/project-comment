@@ -1,8 +1,8 @@
-<div class="flex flex-col bg-green-200 p-4  comment-time">
+<div id="<%= dom_id(a) %>" class="flex flex-col bg-green-200 p-4  comment-time">
   <div class="font-bold mb-4"><%= a.activiable_type %> was <%= a.operation %>d</div>
   <% a.diff && a.diff.each do |property, (from,to)| %>
     <div class="ml-4">
-      Changed <%= property %> from <%= from %> to <%= to %>
+      Changed <span class="text-bold"><%= property %></span> from <%= from %> to <%= to %>
     </div>
   <% end %>
   <div class="flex justify-between mt-4">

@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protected
 
+  helper_method :current_user
+
   def ensure_logged_in
     if session[:user_id].blank?
       redirect_to root_path
